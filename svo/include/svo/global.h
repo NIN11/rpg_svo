@@ -71,6 +71,7 @@ EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector2d)
 
 namespace svo
 {
+  using namespace std;
   using namespace Eigen;
   using namespace Sophus;
 
@@ -96,6 +97,7 @@ namespace svo
 
   class Frame;
   typedef boost::shared_ptr<Frame> FramePtr;
+  typedef Sophus::SE3d SE3;
 } // namespace svo
 
 #endif // SVO_GLOBAL_H_
