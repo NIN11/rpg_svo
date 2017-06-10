@@ -32,11 +32,6 @@
 #include <vikit/performance_monitor.h>
 #include <boost/shared_ptr.hpp>
 #include<Eigen/StdVector>
-#ifndef RPG_SVO_VIKIT_IS_VECTOR_SPECIALIZED //Guard for rpg_vikit
-#define RPG_SVO_VIKIT_IS_VECTOR_SPECIALIZED
-EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector3d)
-EIGEN_DEFINE_STL_VECTOR_SPECIALIZATION(Eigen::Vector2d)
-#endif
 
 #ifdef SVO_USE_ROS
   #include <ros/console.h>
