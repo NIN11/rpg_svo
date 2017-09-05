@@ -119,7 +119,7 @@ void DepthFilterTest::testReconstruction(
     cv::Mat img(cv::imread(img_name, 0));
     assert(!img.empty());
 
-    Sophus::SE3 T_w_f(it->q_, it->t_);
+    Sophus::SE3d T_w_f(it->q_, it->t_);
     if(i == 0)
     {
       // create reference frame and load ground truth depthmap
