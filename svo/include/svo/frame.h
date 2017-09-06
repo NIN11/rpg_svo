@@ -47,7 +47,7 @@ public:
   double                        timestamp_;             //!< Timestamp of when the image was recorded.
   vk::AbstractCamera*           cam_;                   //!< Camera model.
   SE3                           T_f_w_;                 //!< Transform (f)rame from (w)orld.
-  Matrix<double, 6, 6>          Cov_;                   //!< Covariance.
+  Eigen::Matrix<double, 6, 6>   Cov_;                   //!< Covariance.
   ImgPyr                        img_pyr_;               //!< Image Pyramid.
   Features                      fts_;                   //!< List of features in the image.
   vector<Feature*>              key_pts_;               //!< Five features and associated 3D points which are used to detect if two frames have overlapping field of view.
@@ -115,7 +115,7 @@ public:
   /// unit plane coordinates uv (focal length = 1).
   inline static void jacobian_xyz2uv(
       const Vector3d& xyz_in_f,
-      Matrix<double,2,6>& J)
+      Eigen::Matrix<double,2,6>& J)
   {
     const double x = xyz_in_f[0];
     const double y = xyz_in_f[1];

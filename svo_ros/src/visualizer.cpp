@@ -164,7 +164,7 @@ void Visualizer::publishMinimal(
   {
     Quaterniond q;
     Vector3d p;
-    Matrix<double,6,6> Cov;
+    Eigen::Matrix<double,6,6> Cov;
     if(publish_world_in_cam_frame_)
     {
       // publish world in cam frame
