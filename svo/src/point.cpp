@@ -90,7 +90,7 @@ void Point::initNormal()
   const Feature* ftr = obs_.back();
   assert(ftr->frame != NULL);
   normal_ = ftr->frame->T_f_w_.rotationMatrix().transpose()*(-ftr->f);
-  normal_information_ = DiagonalMatrix<double,3,3>(pow(20/(pos_-ftr->frame->pos()).norm(),2), 1.0, 1.0);
+  normal_information_ = Eigen::DiagonalMatrix<double,3,3>(pow(20/(pos_-ftr->frame->pos()).norm(),2), 1.0, 1.0);
   normal_set_ = true;
 }
 

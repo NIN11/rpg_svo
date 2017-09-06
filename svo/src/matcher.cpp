@@ -112,7 +112,7 @@ bool depthFromTriangulation(
     const Vector3d& f_cur,
     double& depth)
 {
-  Matrix<double,3,2> A; A << T_search_ref.rotationMatrix() * f_ref, f_cur;
+  Eigen::Matrix<double,3,2> A; A << T_search_ref.rotationMatrix() * f_ref, f_cur;
   const Matrix2d AtA = A.transpose()*A;
   if(AtA.determinant() < 0.000001)
     return false;
@@ -185,7 +185,7 @@ bool Matcher::findEpipolarMatchDirect(
     const double d_max,
     double& depth)
 {
-  SE3 T_cur_ref = cur_frame.T_f_w_ * ref_frame.T_f_w_.inverse();
+  SE3d T_cur_ref = cur_frame.T_f_w_ * ref_frame.T_f_w_.inverse();
   int zmssd_best = PatchScore::threshold();
   Vector2d uv_best;
 

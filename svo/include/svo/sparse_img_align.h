@@ -54,7 +54,7 @@ public:
 
   /// Return fisher information matrix, i.e. the Hessian of the log-likelihood
   /// at the converged state.
-  Matrix<double, 6, 6> getFisherInformation();
+  Eigen::Matrix<double, 6, 6> getFisherInformation();
 
 protected:
   FramePtr ref_frame_;            //!< reference frame, has depth for gradient pixels.
@@ -65,7 +65,7 @@ protected:
   int min_level_;                 //!< finest pyramid level for the alignment.
 
   // cache:
-  Matrix<double, 6, Dynamic, ColMajor> jacobian_cache_;
+  Eigen::Matrix<double, 6, Dynamic, ColMajor> jacobian_cache_;
   bool have_ref_patch_cache_;
   cv::Mat ref_patch_cache_;
   std::vector<bool> visible_fts_;

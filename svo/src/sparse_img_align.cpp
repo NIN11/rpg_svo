@@ -56,7 +56,7 @@ size_t SparseImgAlign::run(FramePtr ref_frame, FramePtr cur_frame)
   jacobian_cache_.resize(Eigen::NoChange, ref_patch_cache_.rows*patch_area_);
   visible_fts_.resize(ref_patch_cache_.rows, false); // TODO: should it be reset at each level?
 
-  SE3 T_cur_from_ref(cur_frame_->T_f_w_ * ref_frame_->T_f_w_.inverse());
+  SE3d T_cur_from_ref(cur_frame_->T_f_w_ * ref_frame_->T_f_w_.inverse());
 
   for(level_=max_level_; level_>=min_level_; --level_)
   {
@@ -74,10 +74,10 @@ size_t SparseImgAlign::run(FramePtr ref_frame, FramePtr cur_frame)
   return n_meas_/patch_area_;
 }
 
-Matrix<double, 6, 6> SparseImgAlign::getFisherInformation()
+Eigen::Matrix<double, 6, 6> SparseImgAlign::getFisherInformation()
 {
   double sigma_i_sq = 5e-4*255*255; // image noise
-  Matrix<double,6,6> I = H_/sigma_i_sq;
+  Eigen::Matrix<double,6,6> I = H_/sigma_i_sq;
   return I;
 }
 
@@ -108,7 +108,7 @@ void SparseImgAlign::precomputeReferencePatches()
     const Vector3d xyz_ref((*it)->f*depth);
 
     // evaluate projection jacobian
-    Matrix<double,2,6> frame_jac;
+    Eigen::Matrix<double,2,6> frame_jac;
     Frame::jacobian_xyz2uv(xyz_ref, frame_jac);
 
     // compute bilateral interpolation weights for reference image
