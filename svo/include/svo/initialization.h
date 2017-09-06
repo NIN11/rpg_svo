@@ -49,7 +49,7 @@ protected:
   vector<double> disparities_;      //!< disparity between first and second frame.
   vector<int> inliers_;             //!< inliers after the geometric check (e.g., Homography).
   vector<Vector3d, aligned_allocator<Vector3d> > xyz_in_cur_;     //!< 3D points computed during the geometric check.
-  SE3 T_cur_from_ref_;              //!< computed transformation between the first two frames.
+  SE3d T_cur_from_ref_;              //!< computed transformation between the first two frames.
 };
 
 /// Detect Fast corners in the image.

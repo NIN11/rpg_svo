@@ -210,7 +210,7 @@ void BenchmarkNode::runBlenderBenchmark(const std::string& dataset_dir)
     cv::Mat depthmap;
     vk::blender_utils::loadBlenderDepthmap(
         dataset_dir+"/depth/"+it->image_name_+"_0.depth", *cam_, depthmap);
-    Sophus::SE3 T_w_gt(it->q_, it->t_);
+    Sophus::SE3d T_w_gt(it->q_, it->t_);
 
     // Set reference frame with depth
     if(frame_count_ == 0)
@@ -248,7 +248,7 @@ void BenchmarkNode::runBlenderBenchmark(const std::string& dataset_dir)
     }
 
     // Compute pose error and trace to file
-    Sophus::SE3 T_f_gt(vo_->lastFrame()->T_f_w_*T_w_gt);
+    Sophus::SE3d T_f_gt(vo_->lastFrame()->T_f_w_*T_w_gt);
     tracePoseError(T_f_gt, it->timestamp_);
     tracePose(vo_->lastFrame()->T_f_w_.inverse(), it->timestamp_);
     traceDepthError(vo_->lastFrame(), depthmap);

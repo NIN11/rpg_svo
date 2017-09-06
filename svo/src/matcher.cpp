@@ -185,7 +185,7 @@ bool Matcher::findEpipolarMatchDirect(
     const double d_max,
     double& depth)
 {
-  SE3 T_cur_ref = cur_frame.T_f_w_ * ref_frame.T_f_w_.inverse();
+  SE3d T_cur_ref = cur_frame.T_f_w_ * ref_frame.T_f_w_.inverse();
   int zmssd_best = PatchScore::threshold();
   Vector2d uv_best;
 

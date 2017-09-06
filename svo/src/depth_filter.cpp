@@ -219,7 +219,7 @@ void DepthFilter::updateSeeds(FramePtr frame)
     }
 
     // check if point is visible in the current image
-    SE3 T_ref_cur = it->ftr->frame->T_f_w_ * frame->T_f_w_.inverse();
+    SE3d T_ref_cur = it->ftr->frame->T_f_w_ * frame->T_f_w_.inverse();
     const Vector3d xyz_f(T_ref_cur.inverse()*(1.0/it->mu * it->ftr->f) );
     if(xyz_f.z() < 0.0)  {
       ++it; // behind the camera

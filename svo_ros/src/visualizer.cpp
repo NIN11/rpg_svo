@@ -168,7 +168,7 @@ void Visualizer::publishMinimal(
     if(publish_world_in_cam_frame_)
     {
       // publish world in cam frame
-      SE3 T_cam_from_world(frame->T_f_w_* T_world_from_vision_);
+      SE3d T_cam_from_world(frame->T_f_w_* T_world_from_vision_);
       q = Quaterniond(T_cam_from_world.rotationMatrix());
       p = T_cam_from_world.translation();
       Cov = frame->Cov_;
@@ -176,7 +176,7 @@ void Visualizer::publishMinimal(
     else
     {
       // publish cam in world frame
-      SE3 T_world_from_cam(T_world_from_vision_*frame->T_f_w_.inverse());
+      SE3d T_world_from_cam(T_world_from_vision_*frame->T_f_w_.inverse());
       q = Quaterniond(T_world_from_cam.rotationMatrix()*T_world_from_vision_.rotationMatrix().transpose());
       p = T_world_from_cam.translation();
       Cov = T_world_from_cam.Adj()*frame->Cov_*T_world_from_cam.inverse().Adj();
@@ -244,7 +244,7 @@ void Visualizer::removeDeletedPts(const Map& map)
 void Visualizer::displayKeyframeWithMps(const FramePtr& frame, int ts)
 {
   // publish keyframe
-  SE3 T_world_cam(T_world_from_vision_*frame->T_f_w_.inverse());
+  SE3d T_world_cam(T_world_from_vision_*frame->T_f_w_.inverse());
   vk::output_helper::publishFrameMarker(
       pub_frames_, T_world_cam.rotationMatrix(),
       T_world_cam.translation(), "kfs", ros::Time::now(), frame->id_*10, 0, 0.015);
@@ -298,7 +298,7 @@ void Visualizer::exportToDense(const FramePtr& frame)
     msg.max_depth = (float) max_z;
 
     // publish cam in world frame
-    SE3 T_world_from_cam(T_world_from_vision_*frame->T_f_w_.inverse());
+    SE3d T_world_from_cam(T_world_from_vision_*frame->T_f_w_.inverse());
     Quaterniond q(T_world_from_cam.rotationMatrix());
     Vector3d p(T_world_from_cam.translation());
 

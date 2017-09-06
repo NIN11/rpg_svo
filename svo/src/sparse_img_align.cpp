@@ -56,7 +56,7 @@ size_t SparseImgAlign::run(FramePtr ref_frame, FramePtr cur_frame)
   jacobian_cache_.resize(Eigen::NoChange, ref_patch_cache_.rows*patch_area_);
   visible_fts_.resize(ref_patch_cache_.rows, false); // TODO: should it be reset at each level?
 
-  SE3 T_cur_from_ref(cur_frame_->T_f_w_ * ref_frame_->T_f_w_.inverse());
+  SE3d T_cur_from_ref(cur_frame_->T_f_w_ * ref_frame_->T_f_w_.inverse());
 
   for(level_=max_level_; level_>=min_level_; --level_)
   {
