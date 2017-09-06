@@ -90,7 +90,7 @@ void FrameHandlerMono::addImage(const cv::Mat& img, const double timestamp)
 
 FrameHandlerMono::UpdateResult FrameHandlerMono::processFirstFrame()
 {
-  new_frame_->T_f_w_ = SE3(Matrix3d::Identity(), Vector3d::Zero());
+  new_frame_->T_f_w_ = SE3d(Matrix3d::Identity(), Vector3d::Zero());
   if(klt_homography_init_.addFirstFrame(new_frame_) == initialization::FAILURE)
     return RESULT_NO_KEYFRAME;
   new_frame_->setKeyframe();

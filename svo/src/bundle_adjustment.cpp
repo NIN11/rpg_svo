@@ -219,7 +219,7 @@ void localBA(
   // Update Keyframes
   for(set<FramePtr>::iterator it = core_kfs->begin(); it != core_kfs->end(); ++it)
   {
-    (*it)->T_f_w_ = SE3( (*it)->v_kf_->estimate().rotation(),
+    (*it)->T_f_w_ = SE3d( (*it)->v_kf_->estimate().rotation(),
                          (*it)->v_kf_->estimate().translation());
     (*it)->v_kf_ = NULL;
   }
@@ -312,7 +312,7 @@ void globalBA(Map* map)
   for(list<FramePtr>::iterator it_kf = map->keyframes_.begin();
         it_kf != map->keyframes_.end(); ++it_kf)
   {
-    (*it_kf)->T_f_w_ = SE3( (*it_kf)->v_kf_->estimate().rotation(),
+    (*it_kf)->T_f_w_ = SE3d( (*it_kf)->v_kf_->estimate().rotation(),
                             (*it_kf)->v_kf_->estimate().translation());
     (*it_kf)->v_kf_ = NULL;
     for(Features::iterator it_ftr=(*it_kf)->fts_.begin(); it_ftr!=(*it_kf)->fts_.end(); ++it_ftr)
