@@ -1,7 +1,7 @@
 ################################################################################
 # user build settings
 
-SET(TRACE TRUE)
+SET(TRACE FALSE)
 SET(HAVE_G2O FALSE) 
 SET(USE_ROS TRUE) # Set FALSE if you want to build this package without Catkin
 SET(DEBUG_OUTPUT FALSE) # Only relevant if build without ROS
