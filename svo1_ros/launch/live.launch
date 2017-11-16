@@ -1,0 +1,16 @@
+<launch>
+
+    <node pkg="svo1_ros" type="vo" name="svo1" clear_params="true" output="screen">
+
+        <!-- Camera topic to subscribe to -->
+        <param name="cam_topic" value="/camera/image_raw" type="str" />
+
+        <!-- Camera calibration file -->
+        <rosparam file="$(find svo1_ros)/param/camera_atan.yaml" />
+
+        <!-- Default parameter settings: choose between vo_fast and vo_accurate -->
+        <rosparam file="$(find svo1_ros)/param/vo_fast.yaml" />
+
+    </node>
+
+</launch>

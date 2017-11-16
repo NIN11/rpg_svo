@@ -1,0 +1,12 @@
+<library path="src">
+  <class name="Svo1" type="rqt_svo1.svo1.Svo1" base_class_type="rqt_gui_py::Plugin">
+    <description>
+      Plugin for SVO - Semi-Direct Visual Odometry
+    </description>
+    <qtgui>
+      <label>Svo1</label>
+      <icon type="theme">system-help</icon>
+      <statustip>Great user interface to provide real value.</statustip>
+    </qtgui>
+  </class>
+</library>
